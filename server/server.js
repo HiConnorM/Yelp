@@ -1,8 +1,9 @@
 require('dotenv').config()
 const express = require("express");
-
-
+const morgan = require("morgan");
 const app = express();
+
+app.use(express.json());
 
 // Get all restaurants
 app.get("/api/v1/restaurants", (req, res) => {
@@ -10,8 +11,8 @@ app.get("/api/v1/restaurants", (req, res) => {
         status: "success",
         data: {
             restaurant: ["mcdonalds", "wendys"]
-        }
-    })
+        },
+    });
 });
 
 // Get one restaurant
@@ -27,5 +28,5 @@ app.post("/api/v1/restaraunts", (req, res) => {
 
 const port = process.env.PORT;
 app.listen(port, () => {
-    console.log(`server is up and listening on port ${port}`);
+    console.log(`server is up and rolling on port ${port}`);
 });
